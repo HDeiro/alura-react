@@ -1,6 +1,6 @@
 import { Task } from "../../types/task";
 import TaskItem from "../task-item";
-import './style.scss';
+import style from './task-list.module.scss';
 
 const tasks: Task[] = [
     {
@@ -19,7 +19,7 @@ const tasks: Task[] = [
 
 function TaskList() {
     return (
-        <aside className="task-list">
+        <aside className={style['task-list']}>
             <h2>Daily Studies</h2>
             <ul>{
                 tasks.map((task, index) => 
