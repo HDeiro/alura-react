@@ -31,7 +31,7 @@ class Form extends React.Component {
                         name="taskTime" 
                         id="taskTime"/>
                 </div>
-                <Button />
+                <Button label="Criar Tarefa"/>
             </form>
         );
     }

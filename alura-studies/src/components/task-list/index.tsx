@@ -1,5 +1,5 @@
 import { Task } from "../../types/task";
-import TaskItem from "../task-item";
+import TaskItem from "./task-item";
 import style from './task-list.module.scss';
 
 const tasks: Task[] = [

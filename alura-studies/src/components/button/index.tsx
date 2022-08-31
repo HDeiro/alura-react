@@ -1,10 +1,15 @@
 import React from 'react';
 import style from './button.module.scss';
-class Button extends React.Component {
+
+interface ButtonProps {
+    label: string
+}
+
+class Button extends React.Component<ButtonProps> {
     render() {
         return (
             <button className={style.submitButton}>
-                Criar Tarefa
+                {this.props.label}
             </button>
         )
     }
