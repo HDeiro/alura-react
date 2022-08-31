@@ -2,30 +2,20 @@ import { Task } from "../../types/task";
 import TaskItem from "./task-item";
 import style from './task-list.module.scss';
 
-const tasks: Task[] = [
-    {
-        name: 'React',
-        time: '02:00:00'
-    },
-    {
-        name: 'JavaScript',
-        time: '01:20:00'
-    },
-    {
-        name: 'RxJs',
-        time: '00:20:00'
-    }
-];
+interface TaskListProps {
+    tasks: Task[];
+    label?: string;
+}
 
-function TaskList() {
+function TaskList({ tasks, label }: TaskListProps) {
     return (
         <aside className={style['task-list']}>
-            <h2>Daily Studies</h2>
+            <h2>{label || 'Task List'}</h2>
             <ul>{
                 tasks.map((task, index) => 
                     <TaskItem 
                         task={task} 
-                        key={index} 
+                        key={task.name + index} 
                     />
                 )
             }</ul>
