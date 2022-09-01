@@ -5,9 +5,25 @@ import style from './App.module.scss';
 import { useState } from 'react';
 import { Task } from '../types/task';
 
+const mocks: Task[] = [
+  {
+    id: 'batata',
+    name: 'Teste',
+    time: '00:00:03',
+    selected: false,
+    completed: false
+  },
+  {
+    id: 'batata2',
+    name: 'Teste 2',
+    time: '00:00:30',
+    selected: false,
+    completed: false
+  }
+];
 
 function App() {
-  const [tasks, setTasks] = useState<Task[] | []>([]);
+  const [tasks, setTasks] = useState<Task[] | []>(mocks);
   const [selectedTask, setSelectedTask] = useState<Task>();
 
   function selectTask(task: Task) {
@@ -32,7 +48,7 @@ function App() {
         label="Daily Studies"
       />
 
-      <Timer />
+      <Timer task={selectedTask}/>
     </div>
   );
 }

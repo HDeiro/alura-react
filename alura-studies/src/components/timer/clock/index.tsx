@@ -1,18 +1,19 @@
+import { parseToHMS } from '../../../common/utils/datetime';
 import style from './clock.module.scss';
 
-// interface ClockProps {}
+interface ClockProps {
+    time: number;
+}
 
-function Clock() {
-    return (<>
-        <span className={style.clockNumber}>0</span>
-        <span className={style.clockNumber}>0</span>
-        <span className={style.clockDivider}>:</span>
-        <span className={style.clockNumber}>0</span>
-        <span className={style.clockNumber}>0</span>
-        <span className={style.clockDivider}>:</span>
-        <span className={style.clockNumber}>0</span>
-        <span className={style.clockNumber}>0</span>
-    </>)
+function Clock({ time }: ClockProps) {
+    const parsedTime = parseToHMS(time).split('');
+    
+    return (<>{
+        parsedTime.map((char, index) => {
+            const clazz = char === ':' ? style.clockDivider : style.clockNumber;
+            return <span key={index} className={clazz}>{char}</span>
+        })
+    }</>)
 }
 
 export default Clock;
