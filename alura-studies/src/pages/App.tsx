@@ -1,32 +1,24 @@
+import Timer from '../components/timer';
 import Form from '../components/form';
 import TaskList from '../components/task-list';
-import { Task } from '../types/task';
 import style from './App.module.scss';
+import { useState } from 'react';
+import { Task } from '../types/task';
 
-const tasks: Task[] = [
-  {
-      name: 'React',
-      time: '02:00:00'
-  },
-  {
-      name: 'JavaScript',
-      time: '01:20:00'
-  },
-  {
-      name: 'RxJs',
-      time: '00:20:00'
-  }
-];
 
 function App() {
+  const [tasks, setTasks] = useState<Task[] | []>([]);
+
   return (
     <div className={style.AppStyle}>
-      <Form />
+      <Form setTasks={setTasks}/>
       
       <TaskList 
         tasks={tasks} 
         label="Daily Studies"
       />
+
+      <Timer />
     </div>
   );
 }
