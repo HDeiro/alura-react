@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './button.module.scss';
 
 interface ButtonProps {
@@ -7,17 +6,19 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-class Button extends React.Component<ButtonProps> {
-    render() {
-        return (
-            <button 
-                onClick={this.props.onClick}
-                type={this.props.type || 'button'}
-                className={style.submitButton}>
-                {this.props.label}
-            </button>
-        )
-    }
-}
+function Button({ 
+    onClick, 
+    label, 
+    type = 'button' 
+}: ButtonProps) {
+    return (
+        <button 
+            onClick={onClick}
+            type={type}
+            className={style.submitButton}>
+            {label}
+        </button>
+    )
+};
 
 export default Button;
