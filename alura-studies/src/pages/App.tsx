@@ -27,6 +27,8 @@ function App() {
   const [selectedTask, setSelectedTask] = useState<Task>();
 
   function selectTask(task: Task) {
+    if (task.completed) return;
+
     setTasks(currentTasks => {
       currentTasks.forEach(current => 
         current.selected = current.id === task.id
@@ -36,6 +38,20 @@ function App() {
     });
 
     setSelectedTask(task);
+  }
+
+  function finishTask(task: Task) {
+    setSelectedTask(undefined);
+    setTasks(tasks => {
+      const foundTask = tasks.find(({id}) => id === task.id);
+
+      if (foundTask) {
+        foundTask.completed = true;
+        foundTask.selected = false;
+      }
+
+      return tasks;
+    });
   }
 
   return (
@@ -48,7 +64,9 @@ function App() {
         label="Daily Studies"
       />
 
-      <Timer task={selectedTask}/>
+      <Timer 
+        finishedCountdown={finishTask}
+        task={selectedTask}/>
     </div>
   );
 }

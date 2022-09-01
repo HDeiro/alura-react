@@ -8,9 +8,10 @@ import { useEffect, useState } from 'react';
 interface TimerProps {
     label?: string;
     task?: Task;
+    finishedCountdown?: (task: Task) => void;
 }
 
-function Timer({ label, task }: TimerProps) {
+function Timer({ label, task, finishedCountdown }: TimerProps) {
     const [time, setTime] = useState<number>(0);
 
     useEffect(() => {
@@ -25,7 +26,11 @@ function Timer({ label, task }: TimerProps) {
                 const newTime = timeRef - 1;
                 setTime(newTime);
                 countdown(newTime);
-                console.log(newTime);
+                return;
+            }
+
+            if (finishedCountdown && task) {
+                finishedCountdown(task);
             }
         }, 1000);
     }
