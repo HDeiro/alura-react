@@ -12,6 +12,11 @@ export default function Menu() {
       <nav className={style["Menu"]}>
         <Logo />
       </nav>
+      <header className={style.header}>
+        <div className={style.header__text}>
+          A casa do código e da massa
+        </div>
+      </header>
     </main>
   );
 }
