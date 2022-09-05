@@ -5,11 +5,15 @@ import 'normalize.css';
 
 // Import SVG as an SVG tag
 import { ReactComponent as Logo} from 'assets/img/logo.svg';
-import MenuSearchBar from './menu-search-bar';
+
 import { useState } from 'react';
 
+import MenuSearchBar from './menu-search-bar';
+import MenuFilters from './menu-filters';
+
 export default function Menu() {
-  const [searchContent, setSearchContent] = useState('');
+  const [ searchContent, setSearchContent ] = useState('');
+  const [ filters, setFilters ] = useState<number | null>(null);
 
   return (
     <main>
@@ -26,6 +30,11 @@ export default function Menu() {
         <MenuSearchBar 
           searchContent={searchContent} 
           setSearchContent={setSearchContent} />
+          <div className={style.menu_filters}>
+            <MenuFilters 
+              filters={filters}
+              setFilters={setFilters}/>
+          </div>
       </section>
     </main>
   );
