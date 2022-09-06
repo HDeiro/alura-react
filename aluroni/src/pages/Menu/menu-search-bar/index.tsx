@@ -11,6 +11,7 @@ export default function MenuSearchBar({searchContent, setSearchContent}: MenuSea
     return (
         <div className={style.menuSearchBar}>
             <input type="text" 
+                placeholder="Buscar"
                 value={searchContent}
                 onChange={evt => setSearchContent(evt.target.value)} />
             <CgSearch size="20" color="#4C4D5E"/>
