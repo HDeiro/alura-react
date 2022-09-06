@@ -1,6 +1,6 @@
-import React from "react";
-import style from "./menu-search-bar.module.scss"
-import { CgSearch } from "react-icons/cg";
+import React from 'react';
+import style from './menu-search-bar.module.scss';
+import { CgSearch } from 'react-icons/cg';
 
 interface MenuSearchBarProps {
     searchContent: string;
@@ -8,13 +8,13 @@ interface MenuSearchBarProps {
 }
 
 export default function MenuSearchBar({searchContent, setSearchContent}: MenuSearchBarProps) {
-    return (
-        <div className={style.menuSearchBar}>
-            <input type="text" 
-                placeholder="Buscar"
-                value={searchContent}
-                onChange={evt => setSearchContent(evt.target.value)} />
-            <CgSearch size="20" color="#4C4D5E"/>
-        </div>
-    )
+  return (
+    <div className={style.menuSearchBar}>
+      <input type="text" 
+        placeholder="Buscar"
+        value={searchContent}
+        onChange={evt => setSearchContent(evt.target.value)} />
+      <CgSearch size="20" color="#4C4D5E"/>
+    </div>
+  );
 }
