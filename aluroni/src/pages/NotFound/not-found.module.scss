@@ -1,1 +1,28 @@
 @import 'styles/variables';
+
+.notFound {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+
+    svg {
+        max-width: 80vw;
+    }
+
+    .return {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: $red;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+}

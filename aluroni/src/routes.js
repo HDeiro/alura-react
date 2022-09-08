@@ -9,6 +9,7 @@ import Navigation from './components/navigation';
 import About from './pages/About';
 import Main from './pages/Main';
 import Menu from './pages/Menu';
+import NotFound from './pages/NotFound';
 
 export function getRoutesDefinitions() {
   return [
@@ -29,7 +30,7 @@ export function getRoutesDefinitions() {
 
 export default function AppRouter() {
   return (
-    <main>
+    <main className='container'>
       <Router>
         <Navigation />
         <Routes>
@@ -38,6 +39,7 @@ export default function AppRouter() {
             <Route path='menu' element={<Menu />}/>
             <Route path='about' element={<About />}/>
           </Route>
+          <Route path='*' element={<NotFound />}/>
         </Routes>
         <Footer />
       </Router>
