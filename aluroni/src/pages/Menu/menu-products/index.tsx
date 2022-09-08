@@ -1,5 +1,5 @@
 import Product from './product';
-import listOfProducts from './products.json';
+import listOfProducts from 'data/products.json';
 import style from './menu-products.module.scss';
 import { useEffect, useState } from 'react';
 import { MenuSorterOption } from '../menu-sorter';
