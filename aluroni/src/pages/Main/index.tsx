@@ -1,6 +1,7 @@
 import dishes from 'data/products.json';
 import theme from 'styles/theme.module.scss';
 import styles from './main.module.scss';
+import ourRestaurantPhoto from 'assets/img/our-restaurant.png';
 
 function getRecommendedDishes() {
   return [...dishes].sort(() => 0.5 - Math.random()).splice(0,3);
@@ -29,6 +30,14 @@ export default function Main() {
             </div>
           ))
         }
+      </div>
+      <h3 className={theme.container__title}>Nossa Casa</h3>
+      <div className={styles.ourRestaurant}>
+        <img src={ourRestaurantPhoto} alt="Casa do Aluroni" />
+        <div className={styles.ourRestaurant__address}>
+          <p>Rua Teste</p>
+          <p>Bairo Teste - BA</p>
+        </div>
       </div>
     </section>
   );
