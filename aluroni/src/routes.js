@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import BasePage from './components/base-page';
 import Navigation from './components/navigation';
+import About from './pages/About';
 import Main from './pages/Main';
 import Menu from './pages/Menu';
 
@@ -34,6 +35,7 @@ export default function AppRouter() {
           <Route to='/' element={<BasePage />}>
             <Route index element={<Main />}/>
             <Route path='menu' element={<Menu />}/>
+            <Route path='about' element={<About />}/>
           </Route>
         </Routes>
       </Router>
