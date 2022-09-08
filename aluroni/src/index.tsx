@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Menu from './pages/Menu';
 import './index.scss';
-import Main from './pages/Main';
+import Router from './routes';
+
+// Import normalize.css installed via npm
+import 'normalize.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +12,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/* <Menu /> */}
-    <Main />
+    <Router />
   </React.StrictMode>
 );
