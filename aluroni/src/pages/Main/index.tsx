@@ -1,4 +1,5 @@
 import dishes from 'data/products.json';
+import theme from 'styles/theme.module.scss';
 import styles from './main.module.scss';
 
 function getRecommendedDishes() {
@@ -10,7 +11,7 @@ export default function Main() {
 
   return (
     <section>
-      <h3 className={styles.title}>Recomendações da Cozinha</h3>
+      <h3 className={theme.container__title}>Recomendações da Cozinha</h3>
       <div className={styles['recommended-dishes']}>
         {
           recommendedDishes.map(dish => (

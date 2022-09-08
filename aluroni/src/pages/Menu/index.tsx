@@ -1,4 +1,5 @@
 import style from './Menu.module.scss';
+import theme from 'styles/theme.module.scss';
 
 import { useState } from 'react';
 
@@ -14,7 +15,7 @@ export default function Menu() {
 
   return (
     <section className={style.menu}>
-      <h3 className={style.menu__title}>Cardápio</h3>
+      <h3 className={theme.container__title}>Cardápio</h3>
       <MenuSearchBar 
         searchContent={searchContent} 
         setSearchContent={setSearchContent} />
