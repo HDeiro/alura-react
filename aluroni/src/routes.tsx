@@ -35,12 +35,12 @@ export default function AppRouter() {
       <Router>
         <Navigation />
         <Routes>
-          <Route to='/' element={<BasePage />}>
+          <Route path='/' element={<BasePage />}>
             <Route index element={<Main />}/>
             <Route path='menu' element={<Menu />}/>
             <Route path='about' element={<About />}/>
-            <Route path='dish/:id' element={<Dish />}/>
           </Route>
+          <Route path='dish/:id/*' element={<Dish />}/>
           <Route path='*' element={<NotFound />}/>
         </Routes>
         <Footer />
