@@ -1,10 +1,15 @@
 import style from './product.module.scss';
 import { Dish } from 'types/Dishes';
 import DishTags from 'components/dish-tags';
+import { useNavigate } from 'react-router-dom';
 
 export default function Product(product: Dish) {
+  const navigate = useNavigate();
+
   return (
-    <div className={style.product}>
+    <div 
+      onClick={() => navigate(`/dish/${product.id}`)}
+      className={style.product}>
       <img className={style.product__img}
         src={product.photo} 
         alt={`Imagem de um prato "${product.title}"`} />
