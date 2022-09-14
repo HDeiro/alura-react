@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { Dish as DishType } from 'types/Dishes';
 import dishes from 'data/products.json';
 import DishTags from 'components/dish-tags';
+import NotFound from '../NotFound';
 
 export default function Dish() {
   const params = useParams();
 
-  if (!params.id) return '';
+  if (!params.id) return <NotFound />;
 
   const parsedId = parseInt(params.id);
   const dish = dishes.find(({ id }: DishType) => id === parsedId);
 
-  if (!dish) return '';
+  if (!dish) return <NotFound />;
 
   const navigate = useNavigate();
 
