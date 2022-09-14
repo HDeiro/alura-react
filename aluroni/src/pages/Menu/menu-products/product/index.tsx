@@ -1,6 +1,6 @@
 import style from './product.module.scss';
-import classNames from 'classnames';
 import { Dish } from 'types/Dishes';
+import DishTags from 'components/dish-tags';
 
 export default function Product(product: Dish) {
   return (
@@ -13,23 +13,7 @@ export default function Product(product: Dish) {
           <h2>{product.title}</h2>
           <p>{product.description}</p>
         </div>
-        <div className={style.product__tags}>
-          <div className={classNames({
-            [style.product__type]: true,
-            [style[`product__type__${product.category.id}`]]: true
-          })}>
-            {product.category.label}
-          </div>
-          <div className={style.product__portion}>
-            {product.size}g
-          </div>
-          <div className={style.product__serving}>
-            Serve {product.serving} pessoa{product.serving !== 1 ? 's' : ''}
-          </div>
-          <div className={style.product__price}>
-            R$ {product.price.toFixed(2)}
-          </div>
-        </div>
+        <DishTags dish={product} />
       </div>
     </div>
   );
