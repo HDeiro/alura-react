@@ -3,8 +3,7 @@ import listOfProducts from 'data/products.json';
 import style from './menu-products.module.scss';
 import { useEffect, useState } from 'react';
 import { MenuSorterOption } from '../menu-sorter';
-
-export type ProductProps = typeof listOfProducts[0];
+import { Dish } from 'types/Dishes';
 
 interface MenuProductsProps {
     searchContent: string;
@@ -17,7 +16,7 @@ export default function MenuProducts({
   filters: categoryFilter, 
   sortOption
 }: MenuProductsProps) {
-  const [products, setProducts] = useState<ProductProps[]>(listOfProducts);
+  const [products, setProducts] = useState<Dish[]>(listOfProducts);
 
   useEffect(() => {
     function filterByTitle(title: string) {
@@ -32,7 +31,7 @@ export default function MenuProducts({
         : true; // No category filter applied, just pass
     }
 
-    function applySorting(products: ProductProps[]): ProductProps[] {
+    function applySorting(products: Dish[]): Dish[] {
       // No sort applied
       if (!sortOption.length) return products;
 

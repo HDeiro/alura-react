@@ -7,6 +7,7 @@ import BasePage from './components/base-page';
 import Footer from './components/footer';
 import Navigation from './components/navigation';
 import About from './pages/About';
+import Dish from './pages/dish';
 import Main from './pages/Main';
 import Menu from './pages/Menu';
 import NotFound from './pages/NotFound';
@@ -38,6 +39,7 @@ export default function AppRouter() {
             <Route index element={<Main />}/>
             <Route path='menu' element={<Menu />}/>
             <Route path='about' element={<About />}/>
+            <Route path='dish/:id' element={<Dish />}/>
           </Route>
           <Route path='*' element={<NotFound />}/>
         </Routes>

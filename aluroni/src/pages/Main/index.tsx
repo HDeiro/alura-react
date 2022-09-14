@@ -2,13 +2,20 @@ import dishes from 'data/products.json';
 import theme from 'styles/theme.module.scss';
 import styles from './main.module.scss';
 import ourRestaurantPhoto from 'assets/img/our-restaurant.png';
+import { useNavigate } from 'react-router-dom';
+import { Dish } from 'types/Dishes';
 
-function getRecommendedDishes() {
+function getRecommendedDishes(): Dish[] {
   return [...dishes].sort(() => 0.5 - Math.random()).splice(0,3);
 }
 
 export default function Main() {
   const recommendedDishes = getRecommendedDishes();
+  const navigate = useNavigate();
+
+  function redirectToDishDetails(dish: Dish) {
+    navigate(`/dish/${dish.id}`, { state: dish, replace: true });
+  }
 
   return (
     <section>
@@ -24,7 +31,9 @@ export default function Main() {
                 className={styles['recommended-dish__img']}>
                 <img src={dish.photo} alt={dish.title} />
               </div>
-              <button className={styles['recommended-dish__btn']}>
+              <button 
+                onClick={() => redirectToDishDetails(dish)}
+                className={styles['recommended-dish__btn']}>
                 Ver Mais
               </button>
             </div>

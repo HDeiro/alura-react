@@ -1,8 +1,8 @@
 import style from './product.module.scss';
 import classNames from 'classnames';
-import { ProductProps } from '..';
+import { Dish } from 'types/Dishes';
 
-export default function Product(product: ProductProps) {
+export default function Product(product: Dish) {
   return (
     <div className={style.product}>
       <img className={style.product__img}
