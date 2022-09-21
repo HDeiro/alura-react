@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import AdminRestaurantes from './paginas/Admin/AdminRestaurantes';
-import FormRestaurante from './paginas/Admin/AdminRestaurantes/FormRestaurante';
+import AdminRestaurantes from './paginas/Admin/Restaurantes';
+import FormRestaurante from './paginas/Admin/Restaurantes/FormRestaurante';
 import BasePage from './paginas/Base/BasePage';
 import Home from './paginas/Home';
 import VitrineRestaurantes from './paginas/VitrineRestaurantes';
