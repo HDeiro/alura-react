@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import AdminPratos from './paginas/Admin/Pratos';
 import AdminRestaurantes from './paginas/Admin/Restaurantes';
 import FormRestaurante from './paginas/Admin/Restaurantes/FormRestaurante';
 import BasePage from './paginas/Base/BasePage';
@@ -16,6 +17,7 @@ function App() {
         <Route path="restaurantes" element={<AdminRestaurantes />} />
         <Route path="restaurantes/novo" element={<FormRestaurante />} />
         <Route path="restaurantes/:id" element={<FormRestaurante />} />
+        <Route path="pratos" element={<AdminPratos />} />
       </Route>
     </Routes>
   );
