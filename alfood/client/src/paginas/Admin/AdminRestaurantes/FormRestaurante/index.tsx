@@ -47,20 +47,14 @@ export default function FormRestaurante() {
 
         id ? update(payload) : create(payload);
     };
-    
-    const styleBox = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    };
 
     return (
-        <Box sx={styleBox}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
             <Typography component="h1" variant="h6">
                 {id ? 'Edição' : 'Criação'} de Restaurantes
             </Typography>
             <Box 
-                sx={styleBox}
+                sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}
                 component="form" 
                 onSubmit={onSubmitForm}>
                 <TextField 
