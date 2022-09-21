@@ -1,8 +1,8 @@
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import httpAdmin from "../../../../http";
 import IRestaurante from "../../../../interfaces/IRestaurante";
 
 interface FormRestaurantPayload {
@@ -15,7 +15,7 @@ export default function FormRestaurante() {
     
     useEffect(() => {
         if (id) {
-            axios.get<IRestaurante>(`http://localhost:8000/api/v2/restaurantes/${id}/`)
+            httpAdmin.get<IRestaurante>(`restaurantes/${id}/`)
                 .then(response => {
                     const restaurant = response.data;
                     setNome(restaurant.nome);
@@ -25,7 +25,7 @@ export default function FormRestaurante() {
     }, [id]);
     
     const create = (payload: FormRestaurantPayload) => {        
-        axios.post('http://localhost:8000/api/v2/restaurantes/', payload)
+        httpAdmin.post('restaurantes/', payload)
             .then(response => {
                 console.log('Sucesso!', response);
                 setNome('');
@@ -34,7 +34,7 @@ export default function FormRestaurante() {
     }
 
     const update = (payload: FormRestaurantPayload) => {
-        axios.patch(`http://localhost:8000/api/v2/restaurantes/${id}/`, payload)
+        httpAdmin.patch(`restaurantes/${id}/`, payload)
             .then(() => console.log('Alterado com Sucesso!'))
             .catch(console.error);
     }

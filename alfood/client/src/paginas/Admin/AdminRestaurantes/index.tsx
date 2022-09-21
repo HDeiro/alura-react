@@ -1,7 +1,7 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import httpAdmin from "../../../http";
 import IRestaurante from "../../../interfaces/IRestaurante"
 
 export default function AdminRestaurantes() {
@@ -12,13 +12,13 @@ export default function AdminRestaurantes() {
     }, []);
 
     const list = () => {
-        axios.get<IRestaurante[]>('http://localhost:8000/api/v2/restaurantes/')
+        httpAdmin.get<IRestaurante[]>('restaurantes/')
             .then(({ data }) => setRestaurantes(data))
             .catch(console.error);
     }
 
     const deleteRestaurant = (restaurante: IRestaurante) => {
-        axios.delete(`http://localhost:8000/api/v2/restaurantes/${restaurante.id}/`)
+        httpAdmin.delete(`restaurantes/${restaurante.id}/`)
             .then(() => {
                 console.log('Deletado');
                 list();
