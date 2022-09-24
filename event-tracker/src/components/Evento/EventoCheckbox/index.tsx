@@ -1,7 +1,5 @@
 import React from 'react';
-import { useSetRecoilState } from 'recoil';
 import { IEvento } from '../../../interfaces/IEvento';
-import { listaDeEventosState } from '../../../state/atom';
 import useUpdateEvent from '../../../state/hooks/updateEvent';
 
 type Props = { 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { listaDeEventosState } from '../../state/atom';
+import useEvents from '../../state/hooks/useEvents';
 import Evento from '../Evento';
 import Filtro from '../Filtro';
 import style from './ListaDeEventos.module.scss';
@@ -10,7 +9,7 @@ type Props = {
 }
 
 const ListaDeEventos: React.FC<Props> = ({ aoFiltroAplicado }) => {
-  const eventos = useRecoilValue(listaDeEventosState);
+  const eventos = useEvents();
 
   return (<section>
     <Filtro aoFiltroAplicado={aoFiltroAplicado} />
