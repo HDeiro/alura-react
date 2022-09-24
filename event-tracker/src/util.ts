@@ -1,4 +1,4 @@
 export const getId = (() => {
-    let id = 0;
+    let id = 1;
     return () => id++;
 })();
