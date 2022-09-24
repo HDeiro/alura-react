@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { IFiltroDeEventos } from '../../interfaces/IFiltroDeEventos';
+import { filtroDeEventos } from '../../state/atom';
 import style from './Filtro.module.scss';
 
-const Filtro: React.FC<{ aoFiltroAplicado: (data: Date | null) => void }> = ({ aoFiltroAplicado }) => {
-  
+const Filtro: React.FC = () => {
+  const setFiltroDeEventos = useSetRecoilState<IFiltroDeEventos>(filtroDeEventos);
   const [data, setData] = useState('')
   
   const submeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault()
-    if (!data) {
-      aoFiltroAplicado(null)
-      return
-    }
-    aoFiltroAplicado(new Date(data))
+
+    const state = data
+     ? { data: new Date(data) }
+     : {}
+
+    setFiltroDeEventos(state);
   }
 
   return (<form className={style.Filtro} onSubmit={submeterForm}>

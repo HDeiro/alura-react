@@ -4,15 +4,11 @@ import Evento from '../Evento';
 import Filtro from '../Filtro';
 import style from './ListaDeEventos.module.scss';
 
-type Props = { 
-  aoFiltroAplicado: (data: Date | null) => void;
-}
-
-const ListaDeEventos: React.FC<Props> = ({ aoFiltroAplicado }) => {
+const ListaDeEventos: React.FC = () => {
   const eventos = useEvents();
 
   return (<section>
-    <Filtro aoFiltroAplicado={aoFiltroAplicado} />
+    <Filtro />
     <div className={style.Scroll}>
       {eventos.map(evento => (
         <Evento 
