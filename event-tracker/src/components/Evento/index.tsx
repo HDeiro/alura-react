@@ -1,10 +1,18 @@
 import React from 'react';
+import { useSetRecoilState } from 'recoil';
 import { IEvento } from '../../interfaces/IEvento'
+import { listaDeEventosState } from '../../state/atom';
 import style from './Evento.module.scss';
 import EventoCheckbox from './EventoCheckbox';
 
-const Evento: React.FC<{ evento: IEvento, aoAlterarStatus: (id: number) => void, aoDeletarEvento: (id: number) => void }> = ({ evento, aoAlterarStatus, aoDeletarEvento }) => {
+type Props = { 
+  evento: IEvento;
+}
+
+const Evento: React.FC<Props> = ({ evento }) => {
   
+  const setListaEventos = useSetRecoilState(listaDeEventosState);
+
   const estilos = [
     style.Evento
   ]
@@ -13,13 +21,25 @@ const Evento: React.FC<{ evento: IEvento, aoAlterarStatus: (id: number) => void,
     estilos.push(style.completo)
   }
 
-  return (<div className={estilos.join(' ')}>
+  function excluirEvento(id: number | undefined) {
+    if (!id) return;
+    setListaEventos(eventos => [...eventos.filter(evento => evento.id !== id)]);
+  }
 
-    <EventoCheckbox evento={evento} aoAlterarStatus={aoAlterarStatus}/>
-    <div className="cards-info">
-      <h3 className={style.descricao}>{evento.descricao} - {evento.inicio.toLocaleDateString()}</h3>
-    </div>
-    <i className="far fa-times-circle fa-2x" onClick={() => aoDeletarEvento(evento.id!)}></i>
+  return (
+    <div className={estilos.join(' ')}>
+      <EventoCheckbox 
+        evento={evento} />
+    
+      <div className="cards-info">
+        <h3 className={style.descricao}>
+          {evento.descricao} - {evento.inicio.toLocaleDateString()}
+        </h3>
+      </div>
+
+      <i className="far fa-times-circle fa-2x" 
+        onClick={() => excluirEvento(evento.id)}>
+      </i>
   </div>)
 }
 
