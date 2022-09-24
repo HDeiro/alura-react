@@ -6,6 +6,7 @@ import Kalend, { CalendarEvent, CalendarView, OnEventDragFinish } from 'kalend'
 import 'kalend/dist/styles/index.css';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { listaDeEventosState } from '../../state/atom';
+import useUpdateEvent from '../../state/hooks/updateEvent';
 
 interface IKalendEvento {
   id?: number
@@ -16,7 +17,7 @@ interface IKalendEvento {
 }
 
 const Calendario: React.FC = () => {
-  const setListaEventos = useSetRecoilState(listaDeEventosState);
+  const updateEvent = useUpdateEvent();
   const eventos = useRecoilValue(listaDeEventosState);
 
   const eventosKalend = new Map<string, IKalendEvento[]>();
@@ -40,15 +41,10 @@ const Calendario: React.FC = () => {
 
     if (!evt) return;
     
-    const newEvt = {
-      ...evt,
+    updateEvent(evt.id, {
       inicio: new Date(updatedEvent.startAt),
       fim: new Date(updatedEvent.endAt),
-    };
-
-    setListaEventos(evts => [...evts.map(evtItem => 
-      evtItem.id === newEvt.id ? newEvt : evtItem
-    )]);
+    });
   }
 
   return (

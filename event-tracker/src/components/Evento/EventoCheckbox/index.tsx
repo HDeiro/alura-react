@@ -2,6 +2,7 @@ import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import { IEvento } from '../../../interfaces/IEvento';
 import { listaDeEventosState } from '../../../state/atom';
+import useUpdateEvent from '../../../state/hooks/updateEvent';
 
 type Props = { 
   evento: IEvento; 
@@ -9,7 +10,7 @@ type Props = {
 
 const EventoCheckbox: React.FC<Props> = ({ evento }) => {
   
-  const setListaEventos = useSetRecoilState(listaDeEventosState);
+  const updateEvent = useUpdateEvent();
 
   const estilos = [
     'far',
@@ -17,25 +18,15 @@ const EventoCheckbox: React.FC<Props> = ({ evento }) => {
     evento.completo ? 'fa-check-square' : 'fa-square'
   ]
 
-  function updateStatus(id: number | undefined) {
-    if (!id) return;
-    
-    setListaEventos(eventos => [...eventos.map(evento => {
-      if (evento.id === id) {
-        return {
-          ...evento,
-          completo: !evento.completo
-        };
-      }
-
-      return evento;
-    })]);
+  function updateStatus() {
+    const { id, completo } = evento;
+    updateEvent(id, { completo: !completo });
   }
 
   return (
     <i 
       className={estilos.join(' ')} 
-      onClick={() => updateStatus(evento.id)}>
+      onClick={updateStatus}>
     </i>
   );
 }
